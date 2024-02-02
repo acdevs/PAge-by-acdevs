@@ -1,10 +1,8 @@
-# Awesome Chrome Extension
-
-![Extension Logo](/path/to/extension-logo.png)
+# PAge
 
 ## Description
 
-The Awesome Chrome Extension is a powerful tool that enhances your browsing experience by providing unique features and functionalities. With this extension, you can customize your browser, boost productivity, and enjoy a seamless online experience.
+A Chrome extension
 
 ## Features
 
