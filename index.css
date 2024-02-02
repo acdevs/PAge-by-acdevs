@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+* {
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Geologica', sans-serif;
+    background-color: var(--secondary-color);
+    display: grid;
+    grid-template-rows: 1fr 120px 1fr;
+    grid-template-columns: 1fr;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.confetti{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    overflow: hidden;
+}
+.cover{
+    background: var(--tertiary-color);
+    /* backdrop-filter: blur(5px); */
+    z-index: 999;
+}
+.container::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 175px);
+    height: calc(100% - 40px);
+    background: var(--tertiary-color);
+    /* backdrop-filter: blur(5px); */
+    z-index: 9;
+}
+.container {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.years {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 120px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    z-index: 99;
+}
+.year {
+    display: flex;
+    flex-direction: column;
+    width: 75px;
+    height: 120px;
+    transition-duration: 1.75s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transform-style: preserve-3d;
+}
+.year-box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 120px;
+    font-size: 120px;
+    font-weight: 800;
+    color: var(--primary-color);
+    backface-visibility: hidden;
+}
+.year-val-0{
+    transform: rotateX(0deg) translate3d(0, 0, 184.66px);
+}
+.year-val-9{
+    transform: rotateX(36deg) translate3d(0, 0, 184.66px);
+}
+.year-val-8{
+    transform: rotateX(72deg) translate3d(0, 0, 184.66px);
+}
+.year-val-7{
+    transform: rotateX(108deg) translate3d(0, 0, 184.66px);
+}
+.year-val-6{
+    transform: rotateX(144deg) translate3d(0, 0, 184.66px);
+}
+.year-val-5{
+    transform: rotateX(180deg) translate3d(0, 0, 184.66px);
+}
+.year-val-4{
+    transform: rotateX(216deg) translate3d(0, 0, 184.66px);
+}
+.year-val-3{
+    transform: rotateX(252deg) translate3d(0, 0, 184.66px);
+}
+.year-val-2{
+    transform: rotateX(288deg) translate3d(0, 0, 184.66px);
+}
+.year-val-1{
+    transform: rotateX(324deg) translate3d(0, 0, 184.66px);
+}
+.fracs {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    height: 40px;
+    padding: 0 16px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.frac{
+    position: relative;
+    display: flex;
+    width: 32px;
+    flex-direction: column;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transform-style: preserve-3d;
+}
+.frac-box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    min-height: 40px;
+    height: 40px;
+    color: var(--primary-color);
+    font-size: 48px;
+    font-weight: 800;
+    backface-visibility: hidden;
+}
+.frac-val-0{
+    transform: rotateX(0deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-9{
+    transform: rotateX(36deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-8{
+    transform: rotateX(72deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-7{
+    transform: rotateX(108deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-6{
+    transform: rotateX(144deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-5{
+    transform: rotateX(180deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-4{
+    transform: rotateX(216deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-3{
+    transform: rotateX(252deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-2{
+    transform: rotateX(288deg) translate3d(0, 0, 61.55px);
+}
+.frac-val-1{
+    transform: rotateX(324deg) translate3d(0, 0, 61.55px);
+}
+
+.frac-0{
+    transition-duration: 1.5s;
+}
+.frac-1{
+    transition-duration: 1.3125s;
+}
+.frac-2{
+    transition-duration: 1.125s;
+}
+.frac-3{
+    transition-duration: 0.9375s;
+}
+.frac-4{
+    transition-duration: 0.75s;
+}
+.frac-5{
+    transition-duration: 0.5625s;
+}
+.frac-6{
+    transition-duration: 0.375s;
+}
+.frac-7{
+    transition-duration: 0.1875s;
+}

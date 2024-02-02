@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+:root{
+    --digit-0: 0;
+    --digit-1: 0;
+    --digit-2: 0;
+    --digit-3: 0;
+    --digit-4: 0;
+    --digit-5: 0;
+}
+* {
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    font-family: 'Geologica', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+h3{
+    width: 50%;
+    font-size: 24px;
+    margin-bottom: 2rem;
+    text-align: center;
+    z-index: 99;
+    text-wrap: wrap;
+}
+.status{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: 800;
+    overflow: hidden;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    z-index: 999999999;
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(-80px);
+}
+.status-show{
+    transform: translateY(0);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+.digits-wheels {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    min-height: 120px;
+}
+.digits-wheels::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: 140px ;
+    transform: translateX(-50%);
+    width: calc(100% + 100px);
+    height: 160px;
+    background-color: var(--tertiary-color);
+    /* backdrop-filter: blur(5px); */
+    z-index: 9;
+}
+.digits-wheels::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-bottom: 130px ;
+    transform: translateX(-50%);
+    width: calc(100% + 100px);
+    height: 160px;
+    background-color: var(--tertiary-color);
+    /* backdrop-filter: blur(5px); */
+    z-index: 9;
+}
+.digit-spacer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 24px;
+    font-size: 120px;
+    font-weight: 700;
+}
+.digits {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.digit-selector{
+    display: flex;
+    width: 70px;
+    height: 120px;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+}
+.digit-selector-active::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -20px;
+    width: 100%;
+    height: 20px;
+    background-color: var(--primary-color);
+    transform-style: preserve-3d;
+    animation: blink 1s infinite;
+    z-index: 99999 !important;
+}
+@keyframes blink {
+    0% {
+        background-color: var(--primary-color);
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: var(--primary-color);
+    }
+}
+.digit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition-duration: 1s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transform-style: preserve-3d;
+}
+.digit-box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 108px;
+    font-weight: 800;
+    color: var(--primary-color);
+    backface-visibility: hidden;
+}
+.digit-val-0{
+    transform: rotateX(0deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-9{
+    transform: rotateX(36deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-8{
+    transform: rotateX(72deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-7{
+    transform: rotateX(108deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-6{
+    transform: rotateX(144deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-5{
+    transform: rotateX(180deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-4{
+    transform: rotateX(216deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-3{
+    transform: rotateX(252deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-2{
+    transform: rotateX(288deg) translate3d(0, 0, 184.66px);
+}
+.digit-val-1{
+    transform: rotateX(324deg) translate3d(0, 0, 184.66px);
+}
+
+.digit-0{
+    transform: rotateX(calc(36deg * var(--digit-0)));
+}
+.digit-1{
+    transform: rotateX(calc(36deg * var(--digit-1)));
+}
+.digit-2{
+    transform: rotateX(calc(36deg * var(--digit-2)));
+}
+.digit-3{
+    transform: rotateX(calc(36deg * var(--digit-3)));
+}
+.digit-4{
+    transform: rotateX(calc(36deg * var(--digit-4)));
+}
+.digit-5{
+    transform: rotateX(calc(36deg * var(--digit-5)));
+}

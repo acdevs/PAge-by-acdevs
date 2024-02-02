@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "PAge by acdevs. 😸",
+  "version": "1.0",
+  "description": "My aging extensio",
+  "icons": {
+    "48": "icon.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icon.png"
+    }
+  }
+}
+
+  
+  
