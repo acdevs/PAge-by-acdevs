@@ -1,18 +1,18 @@
-const year0 = document.getElementById("year-0");
-const year1 = document.getElementById("year-1");
-const frac0 = document.getElementById("frac-0");
-const frac1 = document.getElementById("frac-1");
-const frac2 = document.getElementById("frac-2");
-const frac3 = document.getElementById("frac-3");
-const frac4 = document.getElementById("frac-4");
-const frac5 = document.getElementById("frac-5");
-const frac6 = document.getElementById("frac-6");
-const frac7 = document.getElementById("frac-7");
-const confetti = document.querySelector(".confetti");
-const confettiColor = getComputedStyle(document.querySelector(':root')).getPropertyValue('--primary-color');
+const YEAR0 = document.getElementById("year-0");
+const YEAR1 = document.getElementById("year-1");
+const FRAC0 = document.getElementById("frac-0");
+const FRAC1 = document.getElementById("frac-1");
+const FRAC2 = document.getElementById("frac-2");
+const FRAC3 = document.getElementById("frac-3");
+const FRAC4 = document.getElementById("frac-4");
+const FRAC5 = document.getElementById("frac-5");
+const FRAC6 = document.getElementById("frac-6");
+const FRAC7 = document.getElementById("frac-7");
+const CONFETTI = document.querySelector(".confetti");
+const CONFETTICOLOR = getComputedStyle(document.querySelector(':root')).getPropertyValue('--primary-color');
 
 let particles = [];
-const colors = [confettiColor];
+const COLORS = [CONFETTICOLOR];
 function pop() {
   for (let i = 0; i < 500; i++) {
     const p = document.createElement("p");
@@ -28,9 +28,9 @@ function pop() {
     const size = Math.random() * 15 + 5;
     p.style.width = size + "px";
     p.style.height = size + "px";
-    p.style.backgroundColor = colors[0];
+    p.style.backgroundColor = COLORS[0];
     p.style.borderRadius = "50%";
-    confetti.appendChild(p);
+    CONFETTI.appendChild(p);
   }
 }
 
@@ -111,16 +111,16 @@ const calculate = setInterval(() => {
     ageYears = "0" + ageYears;
   }
 
-  year0.style.transform = `rotateX(${getDegrees(ageYears[0])}deg)`;
-  year1.style.transform = `rotateX(${getDegrees(ageYears[1])}deg)`;
-  frac0.style.transform = `rotateX(${getDegrees(ageFracs[0])}deg)`;
-  frac1.style.transform = `rotateX(${getDegrees(ageFracs[1])}deg)`;
-  frac2.style.transform = `rotateX(${getDegrees(ageFracs[2])}deg)`;
-  frac3.style.transform = `rotateX(${getDegrees(ageFracs[3])}deg)`;
-  frac4.style.transform = `rotateX(${getDegrees(ageFracs[4])}deg)`;
-  frac5.style.transform = `rotateX(${getDegrees(ageFracs[5])}deg)`;
-  frac6.style.transform = `rotateX(${getDegrees(ageFracs[6])}deg)`;
-  frac7.style.transform = `rotateX(${getDegrees(ageFracs[7])}deg)`;
+  YEAR0.style.transform = `rotateX(${getDegrees(ageYears[0])}deg)`;
+  YEAR1.style.transform = `rotateX(${getDegrees(ageYears[1])}deg)`;
+  FRAC0.style.transform = `rotateX(${getDegrees(ageFracs[0])}deg)`;
+  FRAC1.style.transform = `rotateX(${getDegrees(ageFracs[1])}deg)`;
+  FRAC2.style.transform = `rotateX(${getDegrees(ageFracs[2])}deg)`;
+  FRAC3.style.transform = `rotateX(${getDegrees(ageFracs[3])}deg)`;
+  FRAC4.style.transform = `rotateX(${getDegrees(ageFracs[4])}deg)`;
+  FRAC5.style.transform = `rotateX(${getDegrees(ageFracs[5])}deg)`;
+  FRAC6.style.transform = `rotateX(${getDegrees(ageFracs[6])}deg)`;
+  FRAC7.style.transform = `rotateX(${getDegrees(ageFracs[7])}deg)`;
 
   if (ageYears === String(myAge + 1) && ageFracs === "000000000") {
     popOnce();

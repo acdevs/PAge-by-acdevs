@@ -30,7 +30,6 @@ const toDateStringIN = (date) => {
 
 const isDateValid = (dateStringIN) => {
   date = new Date(toDateStringUS(dateStringIN));
-  console.log(date.getTime());
   if (isNaN(date.getTime())) return false;
   if (
     date.getFullYear() < 1900 ||
@@ -52,7 +51,6 @@ const isDateValid = (dateStringIN) => {
 };
 
 const MYDOB = localStorage.getItem("MY_PAGE_DOB");
-console.log("MYDOB", MYDOB);
 if (MYDOB) {
   let ageString = MYDOB.split("/").join("");
   for (let i = 0; i < 6; i++) {
@@ -82,7 +80,7 @@ document.addEventListener("keydown", function (event) {
     );
     let digitValue;
     if (++value >= 0) digitValue = value % 10;
-    else digitValue = (value % 10) + 10;
+    else digitValue = value == -10 ? 0 : (value % 10) + 10;
     WHEELS[active_digit] = digitValue;
     ROOT.style.setProperty(`--digit-${active_digit}`, value);
   }
@@ -92,7 +90,7 @@ document.addEventListener("keydown", function (event) {
       getComputedStyle(ROOT).getPropertyValue(`--digit-${active_digit}`)
     );
     let digitValue;
-    if (--value < 0) digitValue = (value % 10) + 10;
+    if (--value < 0) digitValue = value == -10 ? 0 : (value % 10) + 10;
     else digitValue = value % 10;
     WHEELS[active_digit] = digitValue;
     ROOT.style.setProperty(`--digit-${active_digit}`, value);
