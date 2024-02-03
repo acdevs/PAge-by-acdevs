@@ -90,39 +90,41 @@ const getDegrees = function (val) {
   return val * 36;
 };
 
-const myDob = localStorage.getItem("MY_PAGE_DOB");
-myBirthDay = new Date(toDateStringUS(myDob));
-const myAge = calculateAge(myBirthDay);
-const myUpcomingBirthDay = new Date(
-  new Date().getFullYear(),
-  myBirthDay.getMonth(),
-  myBirthDay.getDate()
-).getTime();
+chrome.storage.sync.get("MY_PAGE_DOB", (data) => {
+  const myDob = data.MY_PAGE_DOB;
+  myBirthDay = new Date(toDateStringUS(myDob));
+  const myAge = calculateAge(myBirthDay);
+  const myUpcomingBirthDay = new Date(
+    new Date().getFullYear(),
+    myBirthDay.getMonth(),
+    myBirthDay.getDate()
+  ).getTime();
 
-const calculate = setInterval(() => {
-  let currDay = new Date().getTime();
+  const calculate = setInterval(() => {
+    let currDay = new Date().getTime();
 
-  let diff = myUpcomingBirthDay - currDay;
-  let ageFracs = 1 - diff / (1000 * 60 * 60 * 24 * 365);
-  let years = Math.floor(ageFracs);
-  ageFracs = ageFracs.toFixed(9).toString().substring(2);
-  let ageYears = (myAge + years).toString();
-  if (ageYears.length === 1) {
-    ageYears = "0" + ageYears;
-  }
+    let diff = myUpcomingBirthDay - currDay;
+    let ageFracs = 1 - diff / (1000 * 60 * 60 * 24 * 365);
+    let years = Math.floor(ageFracs);
+    ageFracs = ageFracs.toFixed(9).toString().substring(2);
+    let ageYears = (myAge + years).toString();
+    if (ageYears.length === 1) {
+      ageYears = "0" + ageYears;
+    }
 
-  YEAR0.style.transform = `rotateX(${getDegrees(ageYears[0])}deg)`;
-  YEAR1.style.transform = `rotateX(${getDegrees(ageYears[1])}deg)`;
-  FRAC0.style.transform = `rotateX(${getDegrees(ageFracs[0])}deg)`;
-  FRAC1.style.transform = `rotateX(${getDegrees(ageFracs[1])}deg)`;
-  FRAC2.style.transform = `rotateX(${getDegrees(ageFracs[2])}deg)`;
-  FRAC3.style.transform = `rotateX(${getDegrees(ageFracs[3])}deg)`;
-  FRAC4.style.transform = `rotateX(${getDegrees(ageFracs[4])}deg)`;
-  FRAC5.style.transform = `rotateX(${getDegrees(ageFracs[5])}deg)`;
-  FRAC6.style.transform = `rotateX(${getDegrees(ageFracs[6])}deg)`;
-  FRAC7.style.transform = `rotateX(${getDegrees(ageFracs[7])}deg)`;
+    YEAR0.style.transform = `rotateX(${getDegrees(ageYears[0])}deg)`;
+    YEAR1.style.transform = `rotateX(${getDegrees(ageYears[1])}deg)`;
+    FRAC0.style.transform = `rotateX(${getDegrees(ageFracs[0])}deg)`;
+    FRAC1.style.transform = `rotateX(${getDegrees(ageFracs[1])}deg)`;
+    FRAC2.style.transform = `rotateX(${getDegrees(ageFracs[2])}deg)`;
+    FRAC3.style.transform = `rotateX(${getDegrees(ageFracs[3])}deg)`;
+    FRAC4.style.transform = `rotateX(${getDegrees(ageFracs[4])}deg)`;
+    FRAC5.style.transform = `rotateX(${getDegrees(ageFracs[5])}deg)`;
+    FRAC6.style.transform = `rotateX(${getDegrees(ageFracs[6])}deg)`;
+    FRAC7.style.transform = `rotateX(${getDegrees(ageFracs[7])}deg)`;
 
-  if (ageYears === String(myAge + 1) && ageFracs === "000000000") {
-    popOnce();
-  }
-}, 0);
+    if (ageYears === String(myAge + 1) && ageFracs === "000000000") {
+      popOnce();
+    }
+  }, 0);
+});

@@ -50,17 +50,19 @@ const isDateValid = (dateStringIN) => {
   return true;
 };
 
-const MYDOB = localStorage.getItem("MY_PAGE_DOB");
-if (MYDOB) {
-  let ageString = MYDOB.split("/").join("");
-  for (let i = 0; i < 6; i++) {
-    let digit = ageString[i];
-    setTimeout(() => {
-      ROOT.style.setProperty(`--digit-${i}`, digit);
-    }, 1);
-    WHEELS[i] = digit;
+chrome.storage.sync.get("MY_PAGE_DOB", (data) => {
+  const MYDOB = data.MY_PAGE_DOB;
+  if (MYDOB) {
+    let ageString = MYDOB.split("/").join("");
+    for (let i = 0; i < 6; i++) {
+      let digit = ageString[i];
+      setTimeout(() => {
+        ROOT.style.setProperty(`--digit-${i}`, digit);
+      }, 1);
+      WHEELS[i] = digit;
+    }
   }
-}
+});
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowRight") {
@@ -72,6 +74,9 @@ document.addEventListener("keydown", function (event) {
     DIGITS[active_digit--].classList.remove("digit-selector-active");
     active_digit = active_digit < 0 ? 5 : active_digit;
     DIGITS[active_digit].classList.add("digit-selector-active");
+  }
+  if (event.key === "Tab") {
+    event.preventDefault();
   }
   if (event.key === "ArrowUp") {
     event.preventDefault();
@@ -105,7 +110,7 @@ document.addEventListener("keydown", function (event) {
     if (!isDateValid(dob)) {
       showStatusMessage("Error");
     } else {
-      localStorage.setItem("MY_PAGE_DOB", dob);
+      chrome.storage.sync.set({ "MY_PAGE_DOB": dob });
       showStatusMessage("Saved");
       setTimeout(() => {
         history.back();
