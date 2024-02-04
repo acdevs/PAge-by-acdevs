@@ -71,19 +71,18 @@ const toDateStringUS = (dateStringIN) => {
   return `${month}/${day}/${year}`;
 };
 
-const calculateAge = (dob) => {
+const evalDOB = (dob) => {
   if (isNaN(dob.getTime())) {
     return NaN;
   }
   const now = new Date();
-  let age = now.getFullYear() - dob.getFullYear();
-  const hasBirthdayOccurred =
-    now.getMonth() > dob.getMonth() ||
-    (now.getMonth() === dob.getMonth() && now.getDate() >= dob.getDate());
-  if (!hasBirthdayOccurred) {
-    age--;
-  }
-  return age;
+  let age = now.getFullYear() - dob.getFullYear() - 1;
+  let upcomingBirthDay = new Date(
+    now.getFullYear(),
+    dob.getMonth(),
+    dob.getDate()
+  ).getTime();
+  return { age, upcomingBirthDay };
 };
 
 const getDegrees = function (val) {
@@ -93,18 +92,17 @@ const getDegrees = function (val) {
 chrome.storage.sync.get("MY_PAGE_DOB", (data) => {
   const myDob = data.MY_PAGE_DOB;
   myBirthDay = new Date(toDateStringUS(myDob));
-  const myAge = calculateAge(myBirthDay);
-  const myUpcomingBirthDay = new Date(
-    new Date().getFullYear(),
-    myBirthDay.getMonth(),
-    myBirthDay.getDate()
-  ).getTime();
+  const { age : myAge, upcomingBirthDay : myUpcomingBirthDay } = evalDOB(myBirthDay);
+
+  // const myAge = 19;
+  // const myUpcomingBirthDay = new Date(2024, 1, 4, 17, 14).getTime();
 
   const calculate = setInterval(() => {
     let currDay = new Date().getTime();
 
     let diff = myUpcomingBirthDay - currDay;
     let ageFracs = 1 - diff / (1000 * 60 * 60 * 24 * 365);
+    console.log(ageFracs);
     let years = Math.floor(ageFracs);
     ageFracs = ageFracs.toFixed(9).toString().substring(2);
     let ageYears = (myAge + years).toString();
