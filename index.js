@@ -94,15 +94,11 @@ chrome.storage.sync.get("MY_PAGE_DOB", (data) => {
   myBirthDay = new Date(toDateStringUS(myDob));
   const { age : myAge, upcomingBirthDay : myUpcomingBirthDay } = evalDOB(myBirthDay);
 
-  // const myAge = 19;
-  // const myUpcomingBirthDay = new Date(2024, 1, 4, 17, 14).getTime();
-
   const calculate = setInterval(() => {
     let currDay = new Date().getTime();
 
     let diff = myUpcomingBirthDay - currDay;
     let ageFracs = 1 - diff / (1000 * 60 * 60 * 24 * 365);
-    console.log(ageFracs);
     let years = Math.floor(ageFracs);
     ageFracs = ageFracs.toFixed(9).toString().substring(2);
     let ageYears = (myAge + years).toString();
