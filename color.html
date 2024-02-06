@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slider Color Picker</title>
+<style>
+    #colorSlider {
+        width: 300px;
+        height: 20px;
+        background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        border-radius: 10px;
+        position: relative;
+        margin: 20px auto;
+        cursor: pointer;
+    }
+
+    #selector {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: white;
+        border: 2px solid black;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+</head>
+<body>
+<div id="colorSlider">
+    <div id="selector"></div>
+</div>
+
+<script>
+    const colorSlider = document.getElementById('colorSlider');
+    const selector = document.getElementById('selector');
+
+    // Event listener for mouse movement
+    colorSlider.addEventListener('mousemove', function(event) {
+        const rect = colorSlider.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const percent = mouseX / rect.width;
+        selector.style.left = percent * 100 + '%';
+        // Get color based on position
+        const color = getColorAtPosition(percent);
+        selector.style.backgroundColor = color;
+    });
+
+    // Function to get color at a specific position
+    function getColorAtPosition(percent) {
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        const index = Math.floor(percent * (colors.length - 1));
+        return colors[index];
+    }
+</script>
+</body>
+</html>

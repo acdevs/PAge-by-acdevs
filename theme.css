@@ -1,5 +1,147 @@
 :root{
-    --primary-color: #ddbfc3;
-    --secondary-color: #46383a;
-    --tertiary-color: #46383aee;
+    --primary-color: #ffffff;
+    --secondary-color: #3c3c3c;
+    --tertiary-color: #3c3c3cee;
+    --text-color: #000000;
+}
+.customize-control{
+    position: fixed;
+    display: flex;
+    height: 36px;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: var(--primary-color);
+    z-index: 9999;
+    cursor: pointer;
+    border-radius: 40px;
+    padding: 0 16px;
+    transition: 0.3s ease;
+}
+.customize-text{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-color);
+}
+.customize-text span{
+    margin-right: 8px;
+    font-size: 24px;
+}
+.customize-control .customize-text{
+    display: flex;
+}
+.customize-control .customize-slider-box{
+    display: none;
+}
+
+.customize-control-active{
+    width: 300px;
+    height: 130px;
+    padding: 2.5px;
+    border-radius: 16px;
+    animation: gelatine 0.3s ease;
+}
+.customize-control-active .customize-text{
+    display: none;
+}
+.customize-control-active .customize-slider-box{
+    display: flex;
+}
+.customize-slider-box{
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1b1b;
+    padding: 16px;
+    border-radius: 13.5px;
+}
+
+.customize-slider-box-options{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffffee;
+    font-size: 18px;
+}
+
+.customize-control-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.customize-close span{
+    font-size: 18px;
+}
+.customize-close:hover{
+    background-color: #ffffff11;
+}
+
+.customize-color-slider{
+    width: calc(100% - 18px);
+    height: 8px;
+    background: linear-gradient(
+        to right,
+        #ffffff, 
+        #aac7ff, 
+        #bac7e3, 
+        #b8cacd, 
+        #74d7cb, 
+        #a0d490, 
+        #becab8,
+        #ffb787,
+        #dec1b1,
+        #ffb1c0,
+        #ddbfc3,
+        #f6b0ea,
+        #d4bbff,
+        #6a5294,
+        #834a7d,
+        #70585c,
+        #924759,
+        #705a4d,
+        #8e4e1c,
+        #6f5d00,
+        #566253,
+        #3b6930,
+        #006a62,
+        #516164,
+        #525f77,
+        #3a5e98);
+    border-radius: 10px;
+    position: relative;
+    margin: 24px auto;
+    cursor: pointer;
+}
+.customize-selector{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3.5px solid #ffffff;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+@keyframes gelatine {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95, 1.05);
+        transform-origin: bottom center;
+    }
+    100% {
+        transform: scale(1);
+    }
 }

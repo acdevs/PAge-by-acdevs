@@ -1,3 +1,4 @@
+const ROOT = document.querySelector(':root');
 const YEAR0 = document.getElementById("year-0");
 const YEAR1 = document.getElementById("year-1");
 const FRAC0 = document.getElementById("frac-0");
@@ -10,6 +11,16 @@ const FRAC6 = document.getElementById("frac-6");
 const FRAC7 = document.getElementById("frac-7");
 const CONFETTI = document.querySelector(".confetti");
 const CONFETTICOLOR = getComputedStyle(document.querySelector(':root')).getPropertyValue('--primary-color');
+
+chrome.storage.sync.get(['primaryColor', 'secondaryColor', 'isDark'], function(theme) {
+  if(Object.keys(theme).length === 0 && theme.constructor === Object){
+      return;
+  }
+  ROOT.style.setProperty('--primary-color', theme.primaryColor);
+  ROOT.style.setProperty('--secondary-color', theme.secondaryColor);
+  ROOT.style.setProperty('--tertiary-color', theme.secondaryColor + 'ee');
+  ROOT.style.setProperty('--text-color', theme.secondaryColor );
+});
 
 let particles = [];
 const COLORS = [CONFETTICOLOR];
