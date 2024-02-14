@@ -9,6 +9,7 @@ const FRAC4 = document.getElementById("frac-4");
 const FRAC5 = document.getElementById("frac-5");
 const FRAC6 = document.getElementById("frac-6");
 const FRAC7 = document.getElementById("frac-7");
+const FRAC8 = document.getElementById("frac-8");
 const CONFETTI = document.querySelector(".confetti");
 const CONFETTICOLOR = getComputedStyle(document.querySelector(':root')).getPropertyValue('--primary-color');
 
@@ -127,6 +128,7 @@ chrome.storage.sync.get("MY_PAGE_DOB", (data) => {
     FRAC5.style.transform = `rotateX(${getDegrees(ageFracs[5])}deg)`;
     FRAC6.style.transform = `rotateX(${getDegrees(ageFracs[6])}deg)`;
     FRAC7.style.transform = `rotateX(${getDegrees(ageFracs[7])}deg)`;
+    FRAC8.style.transform = `rotateX(${getDegrees(ageFracs[8])}deg)`;
 
     if (ageYears === String(myAge + 1) && ageFracs === "000000000") {
       popOnce();
