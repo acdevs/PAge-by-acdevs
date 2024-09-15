@@ -11,20 +11,20 @@ const FRAC6 = document.getElementById("frac-6");
 const FRAC7 = document.getElementById("frac-7");
 const FRAC8 = document.getElementById("frac-8");
 const CONFETTI = document.querySelector(".confetti");
-const CONFETTICOLOR = getComputedStyle(document.querySelector(':root')).getPropertyValue('--primary-color');
+const COLORS = [];
 
 chrome.storage.sync.get(['primaryColor', 'secondaryColor', 'isDark'], function(theme) {
   if(Object.keys(theme).length === 0 && theme.constructor === Object){
-      return;
+    return;
   }
   ROOT.style.setProperty('--primary-color', theme.primaryColor);
   ROOT.style.setProperty('--secondary-color', theme.secondaryColor);
   ROOT.style.setProperty('--tertiary-color', theme.secondaryColor + 'ee');
   ROOT.style.setProperty('--text-color', theme.secondaryColor );
+  COLORS.push(theme.primaryColor);
 });
 
 let particles = [];
-const COLORS = [CONFETTICOLOR];
 function pop() {
   for (let i = 0; i < 500; i++) {
     const p = document.createElement("p");
@@ -37,7 +37,7 @@ function pop() {
     p.mass = Math.random() * 0.2 + 0.8;
     particles.push(p);
     p.style.transform = `translate(${p.x}px, ${p.y}px)`;
-    const size = Math.random() * 15 + 5;
+    const size = Math.random() * 16;
     p.style.width = size + "px";
     p.style.height = size + "px";
     p.style.backgroundColor = COLORS[0];
@@ -77,7 +77,6 @@ const once = () => {
 };
 
 const popOnce = once();
-
 const toDateStringUS = (dateStringIN) => {
   const [day, month, year] = dateStringIN.split("/");
   return `${month}/${day}/${year}`;
