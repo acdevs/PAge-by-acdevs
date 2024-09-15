@@ -24,6 +24,19 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+.cursor{
+    display: none;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    padding: 8px;
+    background-color: var(--primary-color);
+    margin: -16px;
+    z-index: 999999999;
+}
 h3{
     width: 50%;
     font-size: 24px;
@@ -46,7 +59,7 @@ h3{
     overflow: hidden;
     color: var(--secondary-color);
     background-color: var(--primary-color);
-    z-index: 999999999;
+    z-index: 9999999;
     transition: transform 0.5s ease-in-out;
     transform: translateY(-80px);
 }
